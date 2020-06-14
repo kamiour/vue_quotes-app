@@ -27,8 +27,13 @@ export default {
   },
   methods: {
     createNew() {
-      this.$emit('quoteAdded', this.quote);
-      this.quote = '';
+      if (this.quote) {
+        this.$emit('quoteAdded', this.quote);
+        this.quote = '';
+        return;
+      }
+
+      return alert('A quote should not be empty!');
     },
   },
 };
